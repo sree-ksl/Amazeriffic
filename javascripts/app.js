@@ -2,28 +2,17 @@ var main = function() {
    "use strict";
     //console.log("Hello world");
 
-    var makeTabActive = function(tabNumber){
-      //construct the selector from the tabNumber
-      var tabSelector = ".tabs a:nth-child(" + tabNumber + ") span";
-      //make all tabs insctive
-      $(".tabs span").removeClass("active");
-      $(tabSelector).addClass("active");
-    };
+    var tabNumber;
 
-    $(".tabs a:nth-child(1)").on("click", function () {
-    	makeTabActive();
-    	return false;
-    });
+    for(tabNumber = 1; tabNumber <= 3; tabNumber++){
+    	var tabSelector = ".tabs a:nth-child(" + tabNumber + ") span";
 
-    $(".tabs a:nth-child(2)").on("click", function () {
-    	makeTabActive();
-    	return false;
-    });
-
-    $(".tabs a:nth-child(3)").on("click", function () {
-    	makeTabActive();
-    	return false;
-    });
+    	$(tabSelector).on("click" , function(){
+    		$(".tabs span").removeClass("active");
+    		$(tabSelector).addClass("active");
+    		return false;
+    	});
+    }
 };
 
 $(document).ready(main);
