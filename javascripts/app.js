@@ -1,4 +1,4 @@
-var main = function() {
+var main = function(toDoObjects) {
    "use strict";
     //console.log("Hello world");
 
@@ -11,6 +11,11 @@ var main = function() {
            "Male up some new todos", 
            "Get groceries"
            ];
+    var toDos = todoObjects.map(function(toDo){
+      //we will return the description of this toDoOject
+      return toDo.description;
+    });
+
 
     $(".tabs a span").toArray().forEach(function(element){
     	//create a click handler for this element
@@ -69,4 +74,9 @@ var main = function() {
     });
      $(".tabs a:first-child span").trigger("click");
 };
-$(document).ready(main);
+$(document).ready(function(){
+   $.getJSON("to-dos.json", function(toDoObjects){
+       //call main with the to-dos as an argument
+       main(toDoObjects);
+   });
+});
